@@ -8,16 +8,27 @@ import uuid
 from supabase import create_client, Client
 from datetime import datetime
 import hashlib
+import os 
 
 st.set_page_config(page_title="AI Resume Agent", layout="wide", initial_sidebar_state="collapsed")
 
-openai_api_key = st.secrets.get("openai_api_key")
-rapid_api_key = st.secrets.get("rapid_api_key")
-adzuna_app_id = st.secrets.get("adzuna_app_id")
-adzuna_app_key = st.secrets.get("adzuna_app_key")
-supabase_url = st.secrets.get("supabase_url")
-supabase_key = st.secrets.get("supabase_key")
+openai_api_key = os.getenv("OPENAI_API_KEY")
+rapid_api_key = os.getenv("RAPID_API_KEY")
+adzuna_app_id = os.getenv("ADZUNA_APP_ID")
+adzuna_app_key = os.getenv("ADZUNA_APP_KEY")
+supabase_url = os.getenv("SUPABASE_URL")
+supabase_key = os.getenv("SUPABASE_KEY")
 
+# SAFETY CHECK
+if not openai_api_key:
+    st.error("❌ OPENAI_API_KEY not found. Check Railway Variables.")
+    st.stop()
+
+if not supabase_url or not supabase_key:
+    st.error("❌ Supabase credentials missing. Check Railway Variables.")
+    st.stop()
+
+# INITIALIZE CLIENTS
 client = OpenAI(api_key=openai_api_key)
 supabase: Client = create_client(supabase_url, supabase_key)
 
