@@ -7,6 +7,10 @@ AI-powered resume optimization and job matching platform. Upload your resume onc
 ![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
+---
+#### Try it out - https://www.gethiredwithai.co/
+---
+
 ## 🎯 What It Does
 
 - **Smart Resume Parsing** — AI extracts skills, experience, and achievements from your resume
